@@ -17,7 +17,7 @@ On mouse hover: displays background and red outline)
 
 ## Installation
 
-1. **Download and Install Rainmeter**: If you haven't already, download and install Rainmeter from [rainmeter.net](https://www.rainmeter.net/).
+1. **Download and Install Rainmeter/MSI Afterburner**: If you haven't already, download and install Rainmeter from [rainmeter.net](https://www.rainmeter.net/) download and install MSI Afterburner [msi.com](https://www.msi.com/Landing/afterburner/graphics-cards) | .
 2. **Download the Skin**: Download the latest version of the FPS Counter Rainmeter skin from the [Releases](https://github.com/Nzoyy/FPS-Counter-Rainmeter/releases) section.
 3. **Install the Skin**: Double-click the `.rmskin` file to install it directly into Rainmeter.
 4. **Configure MSI Afterburner**: Ensure MSI Afterburner is installed and configured correctly to provide the FPS data.
