@@ -44,3 +44,74 @@ This Rainmeter skin displays the current framerate (FPS) using data from MSI Aft
 ## Example Configuration
 
 Here is an example of the main configuration file:
+
+```ini
+[Variables]
+skin.Style=Horizontal
+
+@include=#@#variables.ini
+@include2=#@#include\MeterStyles.inc
+
+[MeasureMSIAfterburnerFramerate]
+Measure=Plugin
+Plugin=Plugins\MSIAfterburner.dll
+DataSource=Framerate
+MinValue=1
+MaxValue=100000
+
+[MeasureFramerateLength]
+Measure=Calc
+Formula=Clamp(MeasureMSIAfterburnerFramerate, 0, 999)
+IfCondition=(MeasureMSIAfterburnerFramerate < 10)
+IfTrueAction=[!SetVariable FramerateX 120]
+IfCondition2=(MeasureMSIAfterburnerFramerate >= 10 && MeasureMSIAfterburnerFramerate < 100)
+IfTrueAction2=[!SetVariable FramerateX 135]
+IfCondition3=(MeasureMSIAfterburnerFramerate >= 100)
+IfTrueAction3=[!SetVariable FramerateX 150]
+DynamicVariables=1
+
+[Background]
+Meter=Shape
+Shape=Rectangle 0,0,200,50,5 | Fill Color 0,0,0,1 | StrokeWidth 2 | Stroke Color 255,0,0,255
+X=0
+Y=0
+MouseOverAction=[!SetOption Framerate Hidden "0"][!SetOption Units Hidden "0"][!UpdateMeter *][!Redraw]
+MouseLeaveAction=[!SetOption Framerate Hidden "1"][!SetOption Units Hidden "1"][!UpdateMeter *][!Redraw]
+
+[Framerate]
+Meter=String
+MeasureName=MeasureMSIAfterburnerFramerate
+Text=%1
+FontSize=18
+FontFace=SF Pro Text
+FontColor=0,255,0,255
+StringAlign=Left
+X=100
+Y=30
+AntiAlias=1
+FontEffect=Shadow
+ShadowColor=0,0,0,120
+ShadowX=2
+ShadowY=2
+Hidden=1
+
+[Units]
+Meter=String
+Text=FPS
+FontSize=14
+FontFace=SF Pro Text
+FontColor=0,255,0,255
+StringAlign=Left
+X=#FramerateX#
+Y=34
+AntiAlias=1
+FontEffect=Shadow
+ShadowColor=0,0,0,120
+ShadowX=1
+ShadowY=1
+Hidden=1
+DynamicVariables=1
+
+[Rainmeter]
+Update=1000
+OnRefreshAction=[!UpdateMeasure MeasureMSIAfterburnerFramerate][!UpdateMeasure MeasureFramerateLength][!UpdateMeter "Framerate"][!UpdateMeter "Units"][!Redraw]
