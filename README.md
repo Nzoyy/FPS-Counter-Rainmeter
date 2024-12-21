@@ -4,6 +4,10 @@
 
 This Rainmeter skin displays the current framerate (FPS) using data from MSI Afterburner. It features a dynamic display that shows the FPS value and units only when you hover over the background, ensuring a clean and unobtrusive interface.
 
+(By default, nothing is displayed when FPS = 0
+FPS counter automatically appears when FPS > 0
+On mouse hover: displays background and red outline)
+
 ## Features
 
 - **Dynamic Display**: The FPS counter and units are only visible when the mouse hovers over the background area.
