@@ -61,11 +61,11 @@ DynamicVariables=1
 
 [Background]
 Meter=Shape
-Shape=Rectangle 0,0,200,50,5 | Fill Color 0,0,0,1 | StrokeWidth 2 | Stroke Color 255,0,0,255
-X=0
-Y=0
-MouseOverAction=[!SetOption Framerate Hidden "0"][!SetOption Units Hidden "0"][!UpdateMeter *][!Redraw]
-MouseLeaveAction=[!SetOption Framerate Hidden "1"][!SetOption Units Hidden "1"][!UpdateMeter *][!Redraw]
+Shape=Rectangle 0,0,85,50,5 | Fill Color 0,0,0,1 | StrokeWidth 0
+X=100
+Y=30
+MouseOverAction=[!SetOption Background Shape "Rectangle 0,0,85,50,5 | Fill Color 0,0,0,128 | StrokeWidth 2 | Stroke Color 255,0,0,255"][!SetOption Framerate Hidden "0"][!SetOption Units Hidden "0"][!UpdateMeter *][!Redraw]
+MouseLeaveAction=[!SetOption Background Shape "Rectangle 0,0,85,50,5 | Fill Color 0,0,0,1 | StrokeWidth 0"][!SetOption Framerate Hidden "1"][!SetOption Units Hidden "1"][!UpdateMeter *][!Redraw]
 
 [Framerate]
 Meter=String
@@ -101,6 +101,14 @@ ShadowY=1
 Hidden=1
 DynamicVariables=1
 
+[UpdateVisibility]
+Measure=Calc
+Formula=MeasureMSIAfterburnerFramerate
+IfCondition=(MeasureMSIAfterburnerFramerate > 0)
+IfTrueAction=[!SetOption Framerate Hidden "0"][!SetOption Units Hidden "0"][!UpdateMeter *][!Redraw]
+IfFalseAction=[!SetOption Framerate Hidden "1"][!SetOption Units Hidden "1"][!UpdateMeter *][!Redraw]
+DynamicVariables=1
+
 [Rainmeter]
 Update=1000
-OnRefreshAction=[!UpdateMeasure MeasureMSIAfterburnerFramerate][!UpdateMeasure MeasureFramerateLength][!UpdateMeter "Framerate"][!UpdateMeter "Units"][!Redraw]
+OnRefreshAction=[!UpdateMeasure MeasureMSIAfterburnerFramerate][!UpdateMeasure MeasureFramerateLength][!UpdateMeasure UpdateVisibility][!UpdateMeter "Framerate"][!UpdateMeter "Units"][!Redraw]
